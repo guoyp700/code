@@ -8,7 +8,7 @@ clc                     % 清空命令行
 res =xlsread('G:\2\data\SG_daoshu_yijie.xlsx','193转置','A2:BUC194');
 
 %%  划分训练集和测试集
-rng(123)%随机种子
+rng(3111)%随机种子
 temp = randperm(193);
 
 P_train = res(temp(1: 116), 1: 1900)';
@@ -137,4 +137,5 @@ T_sim2 = [T_sim2; NaN(max_len - length(T_sim2), 1)];
 
 data_to_write = [T_train2, T_sim1, T_test2, T_sim2];
 file_path = 'G:\2\data\SVM_result\CWT_SVM_result\R_SVM.xlsx';
+
 writematrix(data_to_write, file_path, 'Sheet', 'sheet3', 'Range', 'A1'); 
